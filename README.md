@@ -36,36 +36,44 @@
 
 ## �배️ Deployment para Produção
 
-Para fazer o deploy do Doutor Agenda em um servidor de produção, consulte a documentação:
+Para fazer o deploy do Doutor Agenda na Vercel, consulte a documentação:
 
-- **[DEPLOYMENT_SUMMARY.md](./DEPLOYMENT_SUMMARY.md)** - Overview do deployment e status atual
-- **[QUICK_START.md](./QUICK_START.md)** - Guia rápido para iniciar o deploy
-- **[DEPLOYMENT.md](./DEPLOYMENT.md)** - Guia completo passo a passo
-- **[CREDENTIALS_CHECKLIST.md](./CREDENTIALS_CHECKLIST.md)** - Checklist de credenciais necessárias
+### 📖 Documentação Principal
+- **[DEPLOYMENT_SUMMARY_VERCEL.md](./DEPLOYMENT_SUMMARY_VERCEL.md)** - Overview completo (~40-60 min)
+- **[QUICK_START_VERCEL.md](./QUICK_START_VERCEL.md)** - Guia rápido (5 minutos)
+- **[DEPLOYMENT_VERCEL.md](./DEPLOYMENT_VERCEL.md)** - Guia detalhado com troubleshooting
+- **[CREDENTIALS_CHECKLIST.md](./CREDENTIALS_CHECKLIST.md)** - Checklist de credenciais
 - **[.env.example](./.env.example)** - Template de variáveis de ambiente
 
 ### Pré-requisitos
-- Server Ubuntu/Debian com Node.js 18+
-- PostgreSQL 15+
-- aapanel (ou outro painel de controle)
-- Domínio apontando para o servidor
+- Conta GitHub (para repositório)
+- Conta Vercel (gratuita em vercel.com)
+- Supabase para banco PostgreSQL
+- Google OAuth credentials
+- Stripe account e credentials
 
-### Quick Start
-```bash
-# 1. Clonar repositório
-git clone https://github.com/solubiztecnologia/doutor-agenda-final.git
-cd doutor-agenda-final
+### Quick Start (30 minutos)
 
-# 2. Configurar variáveis de ambiente
-cp .env.example .env.local
-# Preencha com suas credenciais
+1. **Criar Supabase** (5 min)
+   ```
+   supabase.com → New Project → Copiar DATABASE_URL
+   ```
 
-# 3. Instalar e build
-npm install
-npm run build
+2. **Obter Credentials** (15 min)
+   - Google OAuth: console.cloud.google.com
+   - Stripe: dashboard.stripe.com
+   - Better Auth Secret: `openssl rand -hex 32`
 
-# 4. Executar em produção
-npm start
-```
+3. **Deploy na Vercel** (10 min)
+   ```
+   vercel.com → Import Repository → Adicionar Environment Variables → Deploy
+   ```
+
+4. **Atualizar URLs** (5 min)
+   - Google OAuth callback
+   - Stripe webhook
+   - NEXT_PUBLIC_APP_URL
+
+Veja **[QUICK_START_VERCEL.md](./QUICK_START_VERCEL.md)** para instruções passo a passo.
 
 ---
